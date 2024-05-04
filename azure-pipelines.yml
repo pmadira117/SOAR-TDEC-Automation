@@ -5,7 +5,7 @@ trigger: none
 
 jobs:
 - job: Job_1
-  displayName: job 1
+  displayName: job1
   pool:
     vmImage: ubuntu-20.04
   steps:
@@ -20,7 +20,7 @@ jobs:
     displayName: Publish Pipeline Artifact
     inputs:
       path: $(Pipeline.Workspace)/file.1
-
+      artifactName: job1
   
 - job: Job_2
   displayName: job2
@@ -37,7 +37,7 @@ jobs:
     displayName: Publish Pipeline Artifact copy
     inputs:
       path: $(Pipeline.Workspace)/file.2
-
+      artifactName: job2
       
 - job: Job_3
   displayName: Agent job
