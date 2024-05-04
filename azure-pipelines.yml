@@ -19,7 +19,7 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact
     inputs:
-      path: $(Pipeline.Workspace)/drop/file.1
+      path: $(Pipeline.Workspace)/file.1
 
   
 - job: Job_2
@@ -36,7 +36,7 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact copy
     inputs:
-      path: $(Pipeline.Workspace)/drop/file.2
+      path: $(Pipeline.Workspace)/file.2
 
       
 - job: Job_3
