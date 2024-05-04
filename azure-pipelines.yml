@@ -39,21 +39,3 @@ jobs:
       path: $(Pipeline.Workspace)/file.2
       artifactName: job2
       
-- job: Job_3
-  displayName: Agent job
-  dependsOn:
-  - Job_1
-  - Job_2
-  pool:
-    vmImage: ubuntu-20.04
-  steps:
-  - checkout: self
-  - task: Bash@3
-    displayName: Bash Script
-    inputs:
-      targetType: inline
-      script: ' mkdir -p  $(Pipeline.Workspace)/previous_artifacts'
-  - task: DownloadPipelineArtifact@2
-    displayName: Download Pipeline Artifact
-    inputs:
-      path: '$(Pipeline.Workspace)/previous_artifacts   '
