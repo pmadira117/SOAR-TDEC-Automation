@@ -1,0 +1,59 @@
+trigger: none
+
+# pool:
+#   vmImage: ubuntu-latest
+
+jobs:
+- job: Job_1
+  displayName: job 1
+  pool:
+    vmImage: ubuntu-20.04
+  steps:
+  - checkout: self
+    persistCredentials: True
+  - task: Bash@3
+    displayName: Bash Script
+    inputs:
+      targetType: inline
+      script: 'printf "Hello form job1\n" > $(Pipeline.Workspace)/file.1 '
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Pipeline Artifact
+    inputs:
+      path: $(Pipeline.Workspace)/file.1
+      artifactName: job1
+  
+- job: Job_2
+  displayName: job2
+  pool:
+    vmImage: ubuntu-20.04
+  steps:
+  - checkout: self
+  - task: Bash@3
+    displayName: Bash Script copy
+    inputs:
+      targetType: inline
+      script: 'printf "Hello form job1\n" > $(Pipeline.Workspace)/file.2 '
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Pipeline Artifact copy
+    inputs:
+      path: $(Pipeline.Workspace)/file.2
+      artifactName: job2
+      
+- job: Job_3
+  displayName: Agent job
+  dependsOn:
+  - Job_1
+  - Job_2
+  pool:
+    vmImage: ubuntu-20.04
+  steps:
+  - checkout: self
+  - task: Bash@3
+    displayName: Bash Script
+    inputs:
+      targetType: inline
+      script: ' mkdir -p  $(Pipeline.Workspace)/previous_artifacts'
+  - task: DownloadPipelineArtifact@2
+    displayName: Download Pipeline Artifact
+    inputs:
+      path: '$(Pipeline.Workspace)/previous_artifacts   '
