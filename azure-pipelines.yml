@@ -19,8 +19,8 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact
     inputs:
-      path: $(Pipeline.Workspace)/file.1
-      artifactName: drop
+      path: $(Pipeline.Workspace)/drop/file.1
+
   
 - job: Job_2
   displayName: job2
@@ -36,8 +36,8 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact copy
     inputs:
-      path: $(Pipeline.Workspace)/file.2
-      artifactName: drop
+      path: $(Pipeline.Workspace)/drop/file.2
+
       
 - job: Job_3
   displayName: Agent job
