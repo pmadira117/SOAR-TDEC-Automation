@@ -37,7 +37,7 @@ jobs:
     displayName: Publish Pipeline Artifact copy
     inputs:
       path: $(Pipeline.Workspace)/file.2
-      artifactName: job2
+      artifactName: job1
 
 - job: Job_3
   displayName: Agent job
