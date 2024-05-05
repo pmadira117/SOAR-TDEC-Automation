@@ -57,3 +57,9 @@ jobs:
     displayName: Download Pipeline Artifact
     inputs:
       path: '$(Pipeline.Workspace)/previous_artifacts   '      
+ 
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Pipeline Artifact 
+    inputs:
+      path: $(Pipeline.Workspace)
+      artifactName: drop
