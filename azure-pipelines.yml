@@ -37,7 +37,7 @@ jobs:
     displayName: Publish Pipeline Artifact copy
     inputs:
       path: $(Pipeline.Workspace)/file.2
-      artifactName: job1
+      artifactName: job2
 
 - job: Job_3
   displayName: Agent job
@@ -59,14 +59,8 @@ jobs:
       buildType: 'current'
       targetPath: '$(Pipeline.Workspace)/previous_artifacts'
 
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: '$(Pipeline.Workspace)/previous_artifacts/job1'
-      Contents: file.1
-      TargetFolder: '$(Pipeline.Workspace)'
-
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact 
     inputs:
-      path: $(Pipeline.Workspace)
+      path: $(Pipeline.Workspace)/previous_artifacts
       artifactName: drop
