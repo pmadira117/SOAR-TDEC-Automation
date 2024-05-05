@@ -62,7 +62,7 @@ jobs:
     displayName: 'Copy history'
     inputs:
       SourceFolder: '$(Pipeline.Workspace)/previous_artifacts/*'
-      Contents: '**/*'
+      Contents: '**/file.*'
       TargetFolder: '$(Pipeline.Workspacey)'
     enabled: false
     condition: succeededOrFailed()
