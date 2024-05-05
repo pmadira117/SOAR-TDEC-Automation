@@ -64,12 +64,12 @@ jobs:
     inputs:
       SourceFolder: '$(Pipeline.Workspace)/previous_artifacts'
       Contents: '**/*.*'
-      TargetFolder: '$(Pipeline.Workspace)/test'
+      TargetFolder: '$(Pipeline.Workspace)'
     enabled: false
     condition: succeededOrFailed()
 
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact 
     inputs:
-      path: $(Pipeline.Workspace)/test
+      path: $(Pipeline.Workspace)
       artifactName: drop
