@@ -57,9 +57,10 @@ jobs:
     displayName: Download Pipeline Artifact
     inputs:
       buildType: 'current'
-      itemPattern: 'file1'
+      itemPattern: |
+        */job1/file1
+        */job2/file2
       targetPath: '$(Pipeline.Workspace)/previous_artifacts'
- 
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact 
     inputs:
