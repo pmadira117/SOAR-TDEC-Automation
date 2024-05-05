@@ -59,8 +59,14 @@ jobs:
       buildType: 'current'
       targetPath: '$(Pipeline.Workspace)/previous_artifacts'
 
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(Pipeline.Workspace)/previous_artifacts'
+      Contents: '**/file.*'
+      TargetFolder: '$(Pipeline.Workspace)'
+
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact 
     inputs:
-      path: $(Pipeline.Workspace)/previous_artifacts/job1/file.1 + $(Pipeline.Workspace)/previous_artifacts/job2/file.2
+      path: $(Pipeline.Workspace)
       artifactName: drop
