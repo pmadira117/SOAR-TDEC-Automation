@@ -57,7 +57,6 @@ jobs:
     displayName: Download Pipeline Artifact
     inputs:
       buildType: 'current'
-      itemPattern: 'file*'
       targetPath: '$(Pipeline.Workspace)/previous_artifacts'
  
   - task: CopyFiles@2
@@ -65,7 +64,7 @@ jobs:
     inputs:
       SourceFolder: '$(Pipeline.Workspace)/previous_artifacts/*'
       Contents: '**job*/*'
-      TargetFolder: '$(Pipeline.Workspacey)'
+      TargetFolder: '$(Pipeline.Workspacey)/test'
     enabled: false
     condition: succeededOrFailed()
 
