@@ -56,13 +56,15 @@ jobs:
   - task: DownloadPipelineArtifact@2
     displayName: Download Pipeline Artifact
     inputs:
-      path: '$(Pipeline.Workspace)/previous_artifacts   '      
+      buildType: 'current'
+      artifactName: 'file'
+      targetPath: '$(Pipeline.Workspace)/previous_artifacts'
  
   - task: CopyFiles@2
     displayName: 'Copy history'
     inputs:
       SourceFolder: '$(Pipeline.Workspace)/previous_artifacts/*'
-      Contents: '**/file.*'
+      Contents: '**job*/*'
       TargetFolder: '$(Pipeline.Workspacey)'
     enabled: false
     condition: succeededOrFailed()
