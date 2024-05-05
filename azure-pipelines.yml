@@ -57,7 +57,7 @@ jobs:
     displayName: Download Pipeline Artifact
     inputs:
       buildType: 'current'
-      artifactName: 'file'
+      itemPattern: 'file*'
       targetPath: '$(Pipeline.Workspace)/previous_artifacts'
  
   - task: CopyFiles@2
