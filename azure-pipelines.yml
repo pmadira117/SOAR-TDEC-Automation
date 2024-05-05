@@ -62,5 +62,5 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact 
     inputs:
-      path: $(Pipeline.Workspace)/previous_artifacts/*/*.*
+      path: $(Pipeline.Workspace)/previous_artifacts/job1/file.1 + $(Pipeline.Workspace)/previous_artifacts/job2/file.2
       artifactName: drop
