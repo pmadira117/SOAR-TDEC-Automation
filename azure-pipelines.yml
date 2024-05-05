@@ -58,8 +58,17 @@ jobs:
     inputs:
       path: '$(Pipeline.Workspace)/previous_artifacts   '      
  
+  - task: CopyFiles@2
+    displayName: 'Copy history'
+    inputs:
+      SourceFolder: '$(system.defaultworkingdirectory)/previous_artifacts/*/*.*'
+      Contents: '**/*.json'
+      TargetFolder: '$(build.artifactstagingdirectory)'
+    enabled: false
+    condition: succeededOrFailed()
+
   - task: PublishPipelineArtifact@1
     displayName: Publish Pipeline Artifact 
     inputs:
-      path: $(Pipeline.Workspace)/previous_artifacts/*/*.*
+      path: $(Pipeline.Workspace)
       artifactName: drop
