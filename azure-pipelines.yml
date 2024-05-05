@@ -61,8 +61,8 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy history'
     inputs:
-      SourceFolder: '$(Pipeline.Workspace)/previous_artifacts/job1/*.*'
-      Contents: '**/*.json'
+      SourceFolder: '$(Pipeline.Workspace)/previous_artifacts/*'
+      Contents: '**/*'
       TargetFolder: '$(Pipeline.Workspacey)'
     enabled: false
     condition: succeededOrFailed()
